@@ -29,6 +29,7 @@
     <None Remove="Attributes\" />
     <None Remove="Attributes\ValidationAttributes\" />
     <None Remove="Areas\Manage\Views\Account\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -57,6 +58,7 @@
     <Folder Include="Attributes\ValidationAttributes\" />
     <Folder Include="wwwroot\uploads\book\" />
     <Folder Include="Areas\Manage\Views\Account\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.18" />

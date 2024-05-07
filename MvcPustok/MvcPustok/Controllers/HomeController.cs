@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MvcPustok.Data;
@@ -8,7 +9,6 @@ namespace MvcPustok.Controllers;
 
 public class HomeController : Controller
 {
-
      private AppDbContext _context;
 
     public HomeController(AppDbContext context)

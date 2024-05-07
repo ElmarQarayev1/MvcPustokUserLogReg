@@ -18,8 +18,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
     option.Password.RequireNonAlphanumeric = false;
     option.Password.RequireUppercase = false;
     option.Password.RequiredLength = 8;
+    option.User.RequireUniqueEmail = true;
 }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
-
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -32,6 +32,19 @@ builder.Services.AddSession(opt =>
 });
 
 builder.Services.AddHttpContextAccessor();
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.Events.OnRedirectToLogin = opt.Events.OnRedirectToAccessDenied = context =>
+    {
+        if (context.Request.Path.Value.ToLower().StartsWith("/manage"))
+        {
+            var uri = new Uri(context.RedirectUri);
+            context.Response.Redirect("/manage/account/login" + uri.Query);
+        }
+
+        return Task.CompletedTask;
+    };
+});
 
 var app = builder.Build();
 
