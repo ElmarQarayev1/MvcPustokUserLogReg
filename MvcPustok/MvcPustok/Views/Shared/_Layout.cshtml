@@ -221,10 +221,13 @@
                             <div class="main-navigation flex-lg-right">
                                 <div class="cart-widget">
                                     <div class="login-block">
-                                        <a href="login-register.html" class="font-weight-bold">Login</a> <br>
-                                        <span>or</span><a href="login-register.html">Register</a>
+                                        <a @(User.Identity.IsAuthenticated ? "href=account/portfolio" : "href=#") class="font-weight-bold">
+                                            @(User.Identity.IsAuthenticated ? "My Account" : "Login")
+                                        </a> <br>
+                                        <span>or</span> <a href="login-register.html">Register</a>
                                     </div>
-                                    <div class="cart-block">
+
+                                    <div class="cart-block">s
                                         <div class="cart-total">
                                             <span class="text-number">
                                                 1

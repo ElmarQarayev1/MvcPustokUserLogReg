@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MvcPustok.Models;
@@ -16,7 +17,6 @@ namespace MvcPustok.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
         public IActionResult Register()
         {
             return View();
@@ -44,14 +44,14 @@ namespace MvcPustok.Controllers
                 }
                 return View();
             }
-            return RedirectToAction("index", "home");
+            return RedirectToAction("login", "account");
         }
         public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(MemberLoginViewModel member)
+        public async Task<IActionResult> Login(MemberLoginViewModel member, string returnUrl)
         {
             AppUser appUser = await _userManager.FindByEmailAsync(member.Email);
             if (appUser == null)
@@ -63,10 +63,24 @@ namespace MvcPustok.Controllers
 
             if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "Email or Password  is incorrect");
+                ModelState.AddModelError("", "Email or Password is incorrect");
                 return View();
             }
-            return RedirectToAction("index", "home");
+            return returnUrl != null ? Redirect(returnUrl) : RedirectToAction("index", "home");
+        }
+        [Authorize]
+        public async Task<IActionResult> Portfolio()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("login", "account");
+            }
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("login", "account");
+            }
+            return View(user);
         }
     }
 }

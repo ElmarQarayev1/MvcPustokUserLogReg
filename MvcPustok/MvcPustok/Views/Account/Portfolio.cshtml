@@ -1,0 +1,126 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Porfolio";
+}
+
+<div class="page-section inner-page-sec-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <!-- My Account Tab Menu Start -->
+                    <div class="col-lg-3 col-12">
+                        <div class="myaccount-tab-menu nav" role="tablist">
+
+                            <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
+
+
+                            <a href="#account-info" data-toggle="tab">
+                                <i class="fa fa-user"></i> Account
+                                Details
+                            </a>
+                            <a href="login-register.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9 col-12 mt--30 mt-lg--0">
+                        <div class="tab-content" id="myaccountContent">
+
+                            <div class="tab-pane fade" id="orders" role="tabpanel">
+                                <div class="myaccount-content">
+                                    <h3>Orders</h3>
+                                    <div class="myaccount-table table-responsive text-center">
+                                        <table class="table table-bordered">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Name</th>
+                                                    <th>Date</th>
+                                                    <th>Status</th>
+                                                    <th>Total</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Mostarizing Oil</td>
+                                                    <td>Aug 22, 2018</td>
+                                                    <td>Pending</td>
+                                                    <td>$45</td>
+                                                    <td><a href="cart.html" class="btn">View</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Katopeno Altuni</td>
+                                                    <td>July 22, 2018</td>
+                                                    <td>Approved</td>
+                                                    <td>$100</td>
+                                                    <td><a href="cart.html" class="btn">View</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Murikhete Paris</td>
+                                                    <td>June 12, 2017</td>
+                                                    <td>On Hold</td>
+                                                    <td>$99</td>
+                                                    <td><a href="cart.html" class="btn">View</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                <div class="myaccount-content">
+                                    <h3>Account Details</h3>
+                                    <div class="account-details-form">
+                                        <form action="#">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-12  mb--30">
+                                                    <input value="@Model.UserName" id="user-name" placeholder="UserName" type="text">
+                                                </div>
+                                                <div class="col-lg-6 col-12  mb--30">
+                                                    <input value="@Model.FullName" id="first-name" placeholder="FullName" type="text">
+                                                </div>
+
+                                                <div class="col-12  mb--30">
+                                                    <input value="@Model.Email" id="email" placeholder="Email Address" type="email">
+                                                </div>
+                                                <div class="col-12  mb--30">
+                                                    <h4>Password change</h4>
+                                                </div>
+                                                <div class="col-12  mb--30">
+                                                    <input id="current-pwd" placeholder="Current Password"
+                                                           type="password">
+                                                </div>
+                                                <div class="col-lg-6 col-12  mb--30">
+                                                    <input id="new-pwd" placeholder="New Password"
+                                                           type="password">
+                                                </div>
+                                                <div class="col-lg-6 col-12  mb--30">
+                                                    <input id="confirm-pwd" placeholder="Confirm Password"
+                                                           type="password">
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="btn btn--primary">Save Changes</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Tab Content End -->
+                        </div>
+                    </div>
+                    <!-- My Account Tab Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Mirrored from dem.hasthemes.com/pustok-preview/pustok/my-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Mar 2021 10:43:11 GMT -->
