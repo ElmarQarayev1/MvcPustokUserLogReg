@@ -6,7 +6,7 @@ using MvcPustok.Data;
 using MvcPustok.ViewModels;
 
 namespace MvcPustok.Controllers;
-
+[Authorize]
 public class HomeController : Controller
 {
      private AppDbContext _context;

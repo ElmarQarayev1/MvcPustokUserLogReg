@@ -45,7 +45,6 @@ builder.Services.ConfigureApplicationCookie(opt =>
         return Task.CompletedTask;
     };
 });
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

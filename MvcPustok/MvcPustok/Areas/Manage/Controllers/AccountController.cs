@@ -34,7 +34,7 @@ namespace MvcPustok.Areas.Manage.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(AdminLoginViewModel admin)
+        public async Task<IActionResult> Login(AdminLoginViewModel admin, string returnUrl)
         {
             AppUser appUser = await _userManager.FindByNameAsync(admin.UserName);
 
@@ -45,13 +45,14 @@ namespace MvcPustok.Areas.Manage.Controllers
             }
             var result = await _signInManager.PasswordSignInAsync(appUser, admin.Password, false, false);
 
+
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "UserName or Password is not true");
                 return View();
             }
 
-            return RedirectToAction("index", "dashboard");
+            return returnUrl != null ? Redirect(returnUrl) : RedirectToAction("index", "dashboard");
         }
        
     }
